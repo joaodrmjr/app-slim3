@@ -19,6 +19,11 @@ $container["db"] = function ($container) use ($capsule) {
 };
 //------------------------------
 
+
+$container["auth"] = function ($container) {
+	return new \App\Auth\Auth($container);
+};
+
 $container["flash"] = function () {
 	return new Slim\Flash\Messages();
 };
