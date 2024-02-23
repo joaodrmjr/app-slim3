@@ -13,9 +13,7 @@ class WebController extends Controller {
 	public function home($request, $response)
 	{
 
-		// $user = User::find(8);
-		// var_dump($user);
-
+		var_dump($this->auth->check());
 		return $this->view->render($response, "home.twig");
 	}
 
