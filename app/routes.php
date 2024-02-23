@@ -3,4 +3,4 @@
 
 
 
-$app->get("/", "WebController:home");
+$app->get("/", "WebController:home")->setName("home");
