@@ -5,6 +5,20 @@
 $container = $app->getContainer();
 
 
+// database
+use Illuminate\Database\Capsule\Manager as Capsule;
+
+$capsule = new Capsule();
+$capsule->addConnection($container->get("settings")["database"]);
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
+
+
+$container["db"] = function ($container) use ($capsule) {
+	return $capsule;
+};
+//------------------------------
+
 $container["flash"] = function () {
 	return new Slim\Flash\Messages();
 };
