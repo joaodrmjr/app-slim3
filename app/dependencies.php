@@ -39,6 +39,11 @@ $container["view"] = function ($container) use ($app) {
 		$container->get("request")->getUri()
 	));
 
+	$view->getEnvironment()->addGlobal("auth", [
+		"state" => $container->get("auth")->check(),
+		"user" => $container->get("auth")->user()
+	]);
+
 	// flash msgs
 	$view->getEnvironment()->addGlobal("flash", $container->flash->getMessages());
 

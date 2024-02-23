@@ -3,12 +3,21 @@
 		<li>
 			<a href="{{ path_for('home') }}">Home</a>
 		</li>
+		{% if auth.state %}
+		<li>
+			<a href="#">{{ auth.user.username }}</a>
+		</li>
+		<li>
+			<a href="{{ path_for('user.logout') }}">Logout</a>
+		</li>
+		{% else %}
 		<li>
 			<a href="{{ path_for('auth.login') }}">Login</a>
 		</li>
 		<li>
 			<a href="{{ path_for('auth.register') }}">Cadastro</a>
 		</li>
+		{% endif %}
 		
 	</ul>
 </nav>

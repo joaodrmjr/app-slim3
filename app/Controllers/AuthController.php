@@ -34,4 +34,12 @@ class AuthController extends Controller {
 		return $this->view->render($response, "auth/register.twig");
 	}
 
+
+	public function logout($request, $response)
+	{
+		$this->auth->logout();
+		$this->flash->addMessage("info", "Sessão encerrada com sucesso!");
+		return $response->withRedirect($this->router->pathFor("auth.login"));
+	}
+
 }

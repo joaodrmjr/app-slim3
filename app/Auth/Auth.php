@@ -50,6 +50,11 @@ class Auth {
 	}
 
 
+	public function logout()
+	{
+		unset($_SESSION[$this->config["session"]]);		
+	}
+
 	public function check(): int
 	{
 		$session = $_SESSION[$this->config["session"]] ?? null;
