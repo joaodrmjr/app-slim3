@@ -16,7 +16,7 @@ $app->group("/auth", function ($container) use ($app) {
 	$app->get("/register", "AuthController:registerPage")->setName("auth.register");
 
 
-});
+})->add(new App\Middleware\GuestMiddleware($container));
 
 
 
