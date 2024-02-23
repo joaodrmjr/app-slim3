@@ -26,4 +26,4 @@ $app->group("/user", function ($container) use ($app) {
 
 	$app->get("/logout", "AuthController:logout")->setName("user.logout");
 
-});
+})->add(new App\Middleware\RedirectAuthMiddleware($container));
