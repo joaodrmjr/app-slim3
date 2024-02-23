@@ -1,0 +1,36 @@
+{% extends 'templates/app.twig' %}
+
+
+{% block content %}
+<div>
+	<form>
+		<h1>Cadastro</h1>
+
+
+		<label>Username</label>
+		<div>
+			<input type="text" name="username">
+		</div>
+
+		<label>Email</label>
+		<div>
+			<input type="text" name="email">
+		</div>
+
+		<label>Senha</label>
+		<div>
+			<input type="password" name="password">
+		</div>
+
+		<label>Confirme a senha</label>
+		<div>
+			<input type="password" name="password_c">
+		</div>
+
+
+		<div>
+			<input type="submit" value="Cadastrar">
+		</div>
+	</form>
+</div>
+{% endblock %}
