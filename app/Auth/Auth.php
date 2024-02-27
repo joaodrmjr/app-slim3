@@ -35,12 +35,12 @@ class Auth {
 		}
 
 		if (!$user = User::where("username", $username)->orWhere("email", $username)->first()) {
-			$this->error = "Um dos campos inseridos está inválido";
+			$this->error = "Um dos campos inseridos é inválido";
 			return false;
 		}
 
 		if (!password_verify($password, $user->password)) {
-			$this->error = "Um dos campos inseridos está inválido";
+			$this->error = "Um dos campos inseridos é inválido";
 			return false;
 		}
 
