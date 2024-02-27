@@ -9,7 +9,7 @@ class AuthController extends Controller {
 
 	public function loginPage($request, $response)
 	{
-
+		
 		return $this->view->render($response, "auth/login.twig");
 	}
 

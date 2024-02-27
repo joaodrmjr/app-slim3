@@ -28,6 +28,10 @@ $container["flash"] = function () {
 	return new Slim\Flash\Messages();
 };
 
+$container["csrf"] = function ($container) {
+	return new Slim\Csrf\Guard();
+};
+
 $container["view"] = function ($container) use ($app) {
 
 	$config = $container->get("settings");
