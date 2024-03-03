@@ -6,6 +6,9 @@
 $app->get("/", "WebController:home")->setName("home");
 
 
+$app->get("/keno", "WebController:kenoPage")->setName("keno");
+
+
 
 $app->group("/auth", function ($container) use ($app) {
 

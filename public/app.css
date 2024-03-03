@@ -1,3 +1,27 @@
 .footer {
 	margin-top: 30px;
 }
+
+
+
+.keno .numeros .num {
+	padding: 10px 13px;
+	background-color: #DDD;
+	cursor: pointer;
+}
+.keno .numeros .sel {
+	background-color: #777;
+}
+
+.keno .premiacoes table td {
+	padding: 3px 20px;
+	text-align: center;
+}
+
+.keno .apostar {
+	margin-top: 25px;
+}
+
+.keno .apostar button {
+	padding: 10px 15px;
+}

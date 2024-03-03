@@ -17,4 +17,10 @@ class WebController extends Controller {
 		return $this->view->render($response, "home.twig");
 	}
 
+
+	public function kenoPage($request, $response)
+	{
+		return $this->view->render($response, "keno.twig");
+	}
+
 }

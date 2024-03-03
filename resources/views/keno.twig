@@ -1,0 +1,57 @@
+{% extends 'templates/app.twig' %}
+
+{% block content %}
+
+
+<h1>Keno Game</h1>
+<div class="keno">
+
+	<div class="numeros">
+		<table id="tableNumeros">
+		{% for i in 1..5 %}
+			<tr>
+			{% for j in 1..8 %}
+			{% set n = (i-1)*8+j %}	
+				<td class="num" value="{{ n }}">{{ n }}</td>
+			{% endfor %}
+			</tr>
+		{% endfor %}
+		</table>
+	</div>
+
+	<div class="premiacoes">
+		<p>Premiação por acerto:</p>
+		<table>
+			<tr>
+				<td>1</td>
+				<td>4x</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>10x</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="valor">
+		<p>Valor da Aposta:</p>
+		<input type="text" id="betValue" placeholder="0.00">
+		<div class="botoes">
+			<button id="btMin">Min</button>
+			<button id="btDividir">/2</button>
+			<button id="btDobrar">X2</button>
+			<button id="btMax">Max</button>
+		</div>
+	</div>
+
+	<div class="apostar">
+		<button id="btApostar">Apostar</button>
+		<button id="btLimpar">Limpar</button>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ base_url() }}/keno.js"></script>
+{% endblock %}
