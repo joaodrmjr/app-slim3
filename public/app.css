@@ -1,17 +1,53 @@
+
 .footer {
 	margin-top: 30px;
 }
 
+.keno .faixaPremiacoes table {
+	border: 2px solid #CCC;
+}
+.keno .faixaPremiacoes table td {
+	padding: 0 15px;
+	text-align: center;
+	border: 2px solid #CCC;
+}
+.keno .faixaPremiacoes tr.reward td {
+	border-color: green;
+}
 
-
-.keno .numeros .num {
-	padding: 10px 13px;
-	background-color: #DDD;
+.keno .numeros table td {
+	background-color: #CCC;
+	border: 2px solid #CCC;
+	padding: 9px;
 	cursor: pointer;
 }
-.keno .numeros .sel {
-	background-color: #777;
+.keno .numeros table td.sel {
+	background-color: blue;
+	border-color: blue;
+	color: white;
 }
+
+.keno .balls {
+	margin-top: 15px;
+}
+.keno .balls span {
+	display: inline-block;
+	background-color: black;
+	color: #FFF;
+	padding: 10px;
+}
+
+.keno .valor {
+	margin-top: 20px;
+}
+
+.keno .action {
+	margin-top: 10px;
+}
+.keno .action button {
+	padding: 10px 15px;
+}
+
 
 #faixaPremiacoesTable td {
 	padding: 3px 20px;

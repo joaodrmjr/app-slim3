@@ -6,42 +6,51 @@
 <h1>Keno Game</h1>
 <div class="keno">
 
+	<div class="faixaPremiacoes">
+		<p>Faixa de Premiações</p>
+		<table>
+			<tr>
+				<th>Hit</th>
+				<td>0</td>
+				<td>1</td>
+			</tr>
+			<tr class="reward">
+				<th>Reward</th>
+				<td>4x</td>
+				<td>20x</td>
+			</tr>
+		</table>
+	</div>
+
+
 	<div class="numeros">
 		<table id="tableNumeros">
 		{% for i in 1..5 %}
 			<tr>
 			{% for j in 1..8 %}
 			{% set n = (i-1)*8+j %}	
-				<td class="num" value="{{ n }}">{{ n }}</td>
+				<td value="{{ n }}">{{ n }}</td>
 			{% endfor %}
 			</tr>
 		{% endfor %}
 		</table>
 	</div>
 
-	<div id="premiacoes">
-		<p>Premiação por acerto:</p>
-		<table id="faixaPremiacoesTable">
-			<tr>
-				<td colspan="2">Selecione mais números</td>
-			</tr>
-		</table>
+	<div class="balls">
+		{% for i in 0..9 %}
+		<span id="ball{{ i }}">{{ i }}</span>
+		{% endfor %}
 	</div>
 
 	<div class="valor">
-		<p>Valor da Aposta:</p>
 		<input type="text" id="betValue" placeholder="0.00">
-		<div class="botoes">
-			<button id="btMin">Min</button>
-			<button id="btDividir">/2</button>
-			<button id="btDobrar">X2</button>
-			<button id="btMax">Max</button>
-		</div>
+		<button>/2</button>
+		<button>x2</button>
 	</div>
 
-	<div class="apostar">
-		<button id="btApostar">Apostar</button>
-		<button id="btLimpar">Limpar</button>
+	<div class="action">
+		<button id="btLimpar">LIMPAR</button>
+		<button id="btSortear">SORTEAR</button>
 	</div>
 </div>
 
