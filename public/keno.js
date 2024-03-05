@@ -7,10 +7,22 @@ var faixaPremiacoes = {
 	9: ["4/4x", "5/11x", "6/56x", "7/500x", "8/800x", "9/1000x"], 10: ["4/3,5x", "5/8x", "6/13x", "7/63x", "8/500x", "9/800x", "10/1000x"]
 };
 
+
+var isAnimating = false;
+var isPlaying = false;
+
+var hits = [];
+
+
 $("#tableNumeros td").click(function (e) {
 
-	let num = parseInt($(this).attr("value"));
+	if (isAnimating) {
+		return;
+	}
 
+	limpaAnimate();
+
+	let num = parseInt($(this).attr("value"));
 
 	if (numerosSelecionados.includes(num)) {
 		let getI = numerosSelecionados.indexOf(num);
@@ -36,6 +48,92 @@ $("#tableNumeros td").click(function (e) {
 	}
 });
 
+$("#btSortear").click(function () {
+
+	isAnimating = true;
+	$("#btSortear").attr("disabled", true);
+
+	$(".keno .balls span").css("display", "none");
+
+	limpaAnimate();
+	hits = [];
+
+	// alert("teste");
+	animateWinnerNumbers([1, 3, 7, 8, 11, 26, 28, 33, 34, 37], 0, function () {
+		stopAnimation();
+	});
+});
+
+
+function limpaAnimate() {
+
+	for (let i = 1; i <= 40; i++) {
+
+		let curBtNumber = $("#btNumber"+i);
+		if (curBtNumber.hasClass("selHit")) {
+			curBtNumber.removeClass("selHit").addClass("sel");
+		}
+
+		if (curBtNumber.hasClass("miss")) curBtNumber.removeClass("miss");
+
+	}
+
+}
+
+function animateWinnerNumbers(winnerNumbers, idx, callback) {
+
+	if (idx < winnerNumbers.length) {
+
+		let nDrawn = winnerNumbers[idx];
+		console.log(nDrawn);
+		let curBtNumber = $("#btNumber"+nDrawn);
+
+		let isHit = false;
+
+		if (numerosSelecionados.includes(nDrawn)) {
+			hits.push(nDrawn);
+			isHit = true;
+
+			$(".faixaPremiacoes table").find("td").removeClass("hit");
+			$(".faixaPremiacoes table td.fx"+hits.length).addClass("hit");
+		}
+
+		curBtNumber.removeClass("miss");
+		if (curBtNumber.hasClass("sel")) {
+			curBtNumber.removeClass("sel").addClass("selHit");
+		}else {
+			curBtNumber.addClass("miss");
+		}
+
+		let curBall = $("#ball"+idx);
+		if (curBall.hasClass("hit")) curBall.removeClass("hit");
+		curBall.html(nDrawn);
+		if (isHit) {
+			curBall.addClass("hit");
+		}
+
+		curBall.show();
+
+		setTimeout(function() {
+			animateWinnerNumbers(winnerNumbers, idx + 1, callback);
+		}, 200);
+
+	}else {
+		// alert("teste");
+		setTimeout(callback, 500);
+
+	}
+
+};
+
+function stopAnimation() {
+	isAnimating = false;
+	$("#btSortear").attr("disabled", false);
+
+	alert(hits);
+	// alert("teste");
+};
+
 function atualizaFaixaPremiacoes(faixaCount) {
 	$(".faixaPremiacoes .hits").find("td").remove();
 	$(".faixaPremiacoes .rewards").find("td").remove();
@@ -47,10 +145,10 @@ function atualizaFaixaPremiacoes(faixaCount) {
 	let faixa = faixaPremiacoes[faixaCount];
 	for (let i = 0; i < faixa.length; i++) {
 		let h = faixa[i].split('/')[0];
-		$(".faixaPremiacoes .hits").append("<td>" + h + "</td>");
+		$(".faixaPremiacoes .hits").append("<td class='fx"+h+"'>" + h + "</td>");
 
 		let r = faixa[i].split('/')[1];
-		$(".faixaPremiacoes .rewards").append("<td>" + r + "</td>");
+		$(".faixaPremiacoes .rewards").append("<td class='fx"+h+"'>" + r + "</td>");
 
 	}
 };

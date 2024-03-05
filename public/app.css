@@ -11,6 +11,10 @@
 	text-align: center;
 	border: 2px solid #CCC;
 }
+.keno .faixaPremiacoes table td.hit {
+	background-color: green;
+	color: white;
+}
 
 .keno .numeros table td {
 	background-color: #CCC;
@@ -23,15 +27,25 @@
 	border-color: blue;
 	color: white;
 }
+.keno .numeros table td.selHit {
+	background-color: green;
+	color: white;
+}
+.keno .numeros table td.miss {
+	border-color: black;
+}
 
 .keno .balls {
 	margin-top: 15px;
 }
 .keno .balls span {
-	display: inline-block;
+	display: none;
 	background-color: black;
 	color: #FFF;
 	padding: 12px;
+}
+.keno .balls span.hit {
+	background-color: green;
 }
 
 .keno .valor {

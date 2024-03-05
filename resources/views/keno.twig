@@ -23,7 +23,7 @@
 			<tr>
 			{% for j in 1..8 %}
 			{% set n = (i-1)*8+j %}	
-				<td value="{{ n }}">{{ n }}</td>
+				<td id="btNumber{{ n }}" value="{{ n }}">{{ n }}</td>
 			{% endfor %}
 			</tr>
 		{% endfor %}
@@ -37,6 +37,7 @@
 	</div>
 
 	<div class="valor">
+		<p>Valor da aposta:</p>
 		<input type="text" id="betValue" placeholder="0.00">
 		<button>/2</button>
 		<button>x2</button>
