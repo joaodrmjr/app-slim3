@@ -27,7 +27,7 @@ $("#tableNumeros td").click(function (e) {
 
 	let numsCount = numerosSelecionados.length;
 
-	// mostraFaixa(numsCount);
+	atualizaFaixaPremiacoes(numsCount);
 
 	if ($(this).hasClass("sel")) {
 		$(this).removeClass("sel");
@@ -35,3 +35,24 @@ $("#tableNumeros td").click(function (e) {
 		$(this).addClass("sel");
 	}
 });
+
+function atualizaFaixaPremiacoes(faixaCount) {
+	$(".faixaPremiacoes .hits").find("td").remove();
+	$(".faixaPremiacoes .rewards").find("td").remove();
+	if (faixaCount <= 0) {
+		$(".faixaPremiacoes .hits").append("<td>Selecione + numeros!</td>");
+		$(".faixaPremiacoes .rewards").append("<td>-</td>");
+		return;
+	}
+	let faixa = faixaPremiacoes[faixaCount];
+	for (let i = 0; i < faixa.length; i++) {
+		let h = faixa[i].split('/')[0];
+		$(".faixaPremiacoes .hits").append("<td>" + h + "</td>");
+
+		let r = faixa[i].split('/')[1];
+		$(".faixaPremiacoes .rewards").append("<td>" + r + "</td>");
+
+	}
+};
+
+atualizaFaixaPremiacoes(0);

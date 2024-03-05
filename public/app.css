@@ -11,14 +11,11 @@
 	text-align: center;
 	border: 2px solid #CCC;
 }
-.keno .faixaPremiacoes tr.reward td {
-	border-color: green;
-}
 
 .keno .numeros table td {
 	background-color: #CCC;
 	border: 2px solid #CCC;
-	padding: 9px;
+	padding: 10px;
 	cursor: pointer;
 }
 .keno .numeros table td.sel {
@@ -34,7 +31,7 @@
 	display: inline-block;
 	background-color: black;
 	color: #FFF;
-	padding: 10px;
+	padding: 12px;
 }
 
 .keno .valor {
